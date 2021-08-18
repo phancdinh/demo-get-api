@@ -40,9 +40,7 @@ export const initAuthenticatedSession = (data) => {
   setCookie(ACCESS_TOKEN_PARAM, data.access_token, {
     expires: expiredDate,
   });
-  setCookie(REFRESH_TOKEN_PARAM, data.refresh_token, {
-    expires: expiredDate,
-  });
+  setCookie(REFRESH_TOKEN_PARAM, data.refresh_token, {});
   setCookie(SCOPE_PARAM, data.scope, {
     expires: expiredDate,
   });

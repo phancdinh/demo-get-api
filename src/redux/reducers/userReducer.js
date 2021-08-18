@@ -10,7 +10,6 @@ const defaultUserState = {
 const userReducer = (state = defaultUserState, { type, payload }) => {
   switch (type) {
     case actions.UPDATE_TOKEN_INFO: {
-      console.log('UPDATE_TOKEN_INFO', payload);
       return {
         ...state,
         isAuthenticated: true,

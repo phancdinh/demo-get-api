@@ -19,7 +19,6 @@
 import axios from 'axios';
 
 import { CONFIG } from '../config';
-import { getCookie, setCookie } from '../helpers/cookies';
 
 import { decodeIdToken, getCodeVerifier, initAuthenticatedSession, setCodeVerifier } from './session';
 import getPKCE from './pkce';

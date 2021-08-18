@@ -9,4 +9,4 @@ export const REF_LOGOUT_URL_PARAM = 'refLogoutUrl';
 
 export const LOGIN_URL = '/login';
 export const LOGOUT_URL = '/callbackLogout';
-export const HOME_URL = '/home';
+export const HOME_URL = '/dashboard';

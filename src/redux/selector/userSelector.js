@@ -5,3 +5,6 @@ export const getUsername = (state) => {
 export const getIdToken = (state) => {
   return state.userReducer.idToken;
 };
+export const getTokenResponse = (state) => {
+  return state.userReducer.tokenResponse;
+};

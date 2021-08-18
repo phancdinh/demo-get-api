@@ -8,7 +8,10 @@ function requiredAuthenticated(WrappedComponent) {
     const { isAuthenticated } = user;
     // check token expired.
     if (!isAuthenticated) {
-      return <Redirect from={location.pathname} to={`/login?ref=${location.pathname}`} noThrow />;
+      // eslint-disable-next-line no-debugger
+      // debugger;
+      console.log('requiredAuthenticated', location.pathname);
+      return <Redirect to={`/login?ref=${location.pathname}`} noThrow />;
     }
     return <WrappedComponent {...rest} />;
   }
