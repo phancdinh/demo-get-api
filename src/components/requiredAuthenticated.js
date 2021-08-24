@@ -6,12 +6,10 @@ function requiredAuthenticated(WrappedComponent) {
   function requiredLogin(props) {
     const { user, location, ...rest } = props;
     const { isAuthenticated } = user;
-    // check token expired.
+    const { pathname } = location;
+    const loginUrl = pathname ? `/login?ref=${pathname}` : '/login';
     if (!isAuthenticated) {
-      // eslint-disable-next-line no-debugger
-      // debugger;
-      console.log('requiredAuthenticated', location.pathname);
-      return <Redirect to={`/login?ref=${location.pathname}`} noThrow />;
+      return <Redirect to={loginUrl} noThrow />;
     }
     return <WrappedComponent {...rest} />;
   }

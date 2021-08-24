@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { redirectTo } from '@reach/router';
 import queryString from 'query-string';
 import { useTranslation } from 'react-i18next';
 import last from 'lodash/last';
@@ -101,6 +100,8 @@ function Login(props) {
     const refreshToken = getRefreshToken();
     // If a authorization code exists, sends a token request.
     if (code) {
+      // eslint-disable-next-line no-console
+      console.log('send token request');
       sendTokenRequest(code)
         .then((response) => {
           // eslint-disable-next-line no-console
