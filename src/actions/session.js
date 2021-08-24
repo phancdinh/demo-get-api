@@ -34,25 +34,18 @@ import {
  * Initialize authenticated user session.\
  */
 export const initAuthenticatedSession = (data) => {
-  const parsedToken = jwtDecode(data.access_token);
-  const expiredDate = new Date(parsedToken.exp * 1000);
-
-  setCookie(ACCESS_TOKEN_PARAM, data.access_token, {
+  const expiredDate = new Date();
+  expiredDate.setSeconds(expiredDate.getSeconds() + data.expires_in);
+  setSessionParameter(ACCESS_TOKEN_PARAM, data.access_token, {
     expires: expiredDate,
   });
-  setCookie(REFRESH_TOKEN_PARAM, data.refresh_token, {});
-  setCookie(SCOPE_PARAM, data.scope, {
+  setSessionParameter(REFRESH_TOKEN_PARAM, data.refresh_token);
+  setSessionParameter(ID_TOKEN_PARAM, data.id_token, {
     expires: expiredDate,
   });
-  setCookie(ID_TOKEN_PARAM, data.id_token, {
-    expires: expiredDate,
-  });
-  setCookie(TOKEN_TYPE_PARAM, data.token_type, {
-    expires: expiredDate,
-  });
-  setCookie(EXPIRES_IN_PARAM, data.expires_in, {
-    expires: expiredDate,
-  });
+  setSessionParameter(TOKEN_TYPE_PARAM, data.token_type);
+  setSessionParameter(EXPIRES_IN_PARAM, data.expires_in);
+  setSessionParameter(SCOPE_PARAM, data.scope);
 };
 
 /**
@@ -63,6 +56,12 @@ export const initAuthenticatedSession = (data) => {
  */
 export const getSessionParameter = (key) => {
   return getCookie(key);
+};
+
+export const setSessionParameter = (key, value, options = {}) => {
+  setCookie(key, value, {
+    ...options,
+  });
 };
 
 /**
@@ -84,8 +83,7 @@ export const resetAuthenticatedSession = () => {
  * @return {boolean}
  */
 export const isValidSession = () => {
-  const token = getCookie('ACCESS_TOKEN');
-  // check token.
+  const token = getSessionParameter(ACCESS_TOKEN_PARAM);
   return Boolean(token);
 };
 
@@ -97,12 +95,12 @@ export const isValidSession = () => {
 export const getAllSessionParameters = () => {
   const session = {};
 
-  session[ACCESS_TOKEN_PARAM] = getCookie(ACCESS_TOKEN_PARAM);
-  session[REFRESH_TOKEN_PARAM] = getCookie(REFRESH_TOKEN_PARAM);
-  session[SCOPE_PARAM] = getCookie(SCOPE_PARAM);
-  session[ID_TOKEN_PARAM] = getCookie(ID_TOKEN_PARAM);
-  session[TOKEN_TYPE_PARAM] = getCookie(TOKEN_TYPE_PARAM);
-  session[EXPIRES_IN_PARAM] = getCookie(EXPIRES_IN_PARAM);
+  session[ACCESS_TOKEN_PARAM] = getSessionParameter(ACCESS_TOKEN_PARAM);
+  session[REFRESH_TOKEN_PARAM] = getSessionParameter(REFRESH_TOKEN_PARAM);
+  session[SCOPE_PARAM] = getSessionParameter(SCOPE_PARAM);
+  session[ID_TOKEN_PARAM] = getSessionParameter(ID_TOKEN_PARAM);
+  session[TOKEN_TYPE_PARAM] = getSessionParameter(TOKEN_TYPE_PARAM);
+  session[EXPIRES_IN_PARAM] = getSessionParameter(EXPIRES_IN_PARAM);
 
   return session;
 };
@@ -118,15 +116,15 @@ export const decodeIdToken = (token) => {
 };
 
 export const setCodeVerifier = (codeVerifier) => {
-  setCookie(CODE_VERIFIER_PARAM, codeVerifier);
+  setSessionParameter(CODE_VERIFIER_PARAM, codeVerifier);
 };
 
 export const getCodeVerifier = () => {
-  return getCookie(CODE_VERIFIER_PARAM);
+  return getSessionParameter(CODE_VERIFIER_PARAM);
 };
 
 export const getRefreshToken = () => {
-  return getCookie(REFRESH_TOKEN_PARAM);
+  return getSessionParameter(REFRESH_TOKEN_PARAM);
 };
 
 export const addRefLogoutUrl = () => {

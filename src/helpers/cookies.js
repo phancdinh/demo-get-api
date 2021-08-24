@@ -40,6 +40,8 @@ export function removeCookie(cookieName, cookiePath = CONFIG.COOKIE_PATH) {
  * @param cookieName - Name of the cookie.
  * @return {any}
  */
-export function getCookie(cookieName) {
-  return cookies.get(cookieName);
+export function getCookie(cookieName, cookiePath = CONFIG.COOKIE_PATH) {
+  return cookies.get(cookieName, {
+    path: cookiePath,
+  });
 }
