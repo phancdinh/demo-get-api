@@ -1,3 +1,9 @@
 {
-  "logIn": "Login"
+  "topenx.app": "TopenX apps",
+  "logIn": "Login",
+  "logIn.message": "Login for more information.",
+  "leftMenu.dashboard": "Dashboard",
+  "leftMenu.userInfo": "User Info",
+  "leftMenu.management": "TopenId management",
+  "leftMenu.identifier": "Identifier"
 }

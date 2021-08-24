@@ -1,0 +1,109 @@
+@import "../../../../scss/variables";
+
+$left-nav-item-height: 56px;
+$left-menu-active-text-color: #E87A26;
+$left-menu-active-bg: #FEF7F0;
+$left-menu-active-border-color1: #EE8022;
+$left-menu-active-border-color2: #F4AB57;
+
+.left-menu {
+  .logo-wrap {
+    margin-top: 24px;
+    margin-bottom: 58px;
+    .logo {
+      background: url("../../../../assets/images/logo.svg") no-repeat left center;
+      height: 66px;
+      width: 155px;
+      color: transparent;
+    }
+  }
+
+  .nav-item {
+    height: $left-nav-item-height;
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      height: 100%;
+      border-left-width: 4px;
+      border-style: solid;
+      border-image: linear-gradient(
+                      to bottom,
+                      $background,
+                      $background
+      ) 0 100%;
+      border-right: 0;
+      border-top: 0;
+      border-bottom: 0;
+      color: $body-color;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 17px;
+      padding: 20px 16px 20px 25px;
+
+      .prefix-icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        flex: 0 0 36px;
+
+        span {
+          width: 24px;
+          height: 24px;
+          background-position: center center;
+          background-repeat: no-repeat;
+
+          &.dashboard {
+            background-image: url("./images/dashboard.svg");
+          }
+
+          &.user-info {
+            background-image: url("./images/user-info.svg");
+          }
+          &.user-info {
+            background-image: url("./images/user-info.svg");
+          }
+          &.account-privacy {
+            background-image: url("./images/account-privacy.svg");
+          }
+          &.security {
+            background-image: url("./images/security.svg");
+          }
+        }
+
+      }
+
+      &.active {
+        color: $left-menu-active-text-color;
+        background-color: $left-menu-active-bg;
+        border-image: linear-gradient(
+                        to bottom,
+                        $left-menu-active-border-color1,
+                        $left-menu-active-border-color2
+        ) 0 100%;
+        .prefix-icon {
+          width: 24px;
+          height: 24px;
+          display: flex;
+          flex: 0 0 36px;
+          background-position: center center;
+          background-repeat: no-repeat;
+          .dashboard {
+            background-image: url("./images/dashboard-active.svg");
+          }
+          .user-info {
+            background-image: url("./images/user-info-active.svg");
+          }
+          .account-privacy {
+            background-image: url("./images/account-privacy-active.svg");
+          }
+          .security {
+            background-image: url("./images/security-active.svg");
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,9 @@
 {
-  "logIn": "Đăng Nhập"
+  "topenx.app": "Hệ sinh thái TopenX",
+  "logIn": "Đăng Nhập",
+  "logIn.message": "Đăng nhập để sử dụng thêm tiện ích.",
+  "leftMenu.dashboard": "Trang chủ",
+  "leftMenu.userInfo": "Thông tin cá nhân",
+  "leftMenu.management": "Quản lý tài khoản TopenID",
+  "leftMenu.identifier": "Định danh trực tuyến"
 }

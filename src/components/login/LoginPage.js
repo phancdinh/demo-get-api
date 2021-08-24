@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from '@reach/router';
+import { redirectTo } from '@reach/router';
 import queryString from 'query-string';
 import { useTranslation } from 'react-i18next';
+import last from 'lodash/last';
 
+import logo from '../../assets/images/logo.svg';
+import bodyIcon from '../../assets/images/body-icon.svg';
 import { UPDATE_TOKEN_INFO, UPDATE_USER_INFO } from '../../redux/actions/actions';
 import {
   sendAuthorizationRequest,
@@ -25,14 +28,53 @@ import {
   SCOPE_PARAM,
   TOKEN_TYPE_PARAM,
 } from '../../constants/authentication';
+import Language from '../layout/language';
+import LoginIcon from './images/log-in-btn.svg';
+
+function TopBar() {
+  function handleLoginBtnClick() {
+    sendAuthorizationRequest();
+  }
+  return (
+    <div className="top-menu d-flex col-12 justify-content-between px-3 py-2">
+      <div className="d-flex logo">
+        <img src={logo} alt="logo" />
+      </div>
+      <div className="d-flex px-2">
+        <div className="px-4 d-flex align-items-center">
+          <Language />
+        </div>
+
+        <div className="d-flex px-4 align-items-center">
+          <button
+            type="button"
+            className="bg-transparent border-0 login-btn"
+            onClick={() => handleLoginBtnClick()}
+          >
+            <img src={LoginIcon} alt="Login" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Login(props) {
   const { t } = useTranslation();
 
   const isSessionValid = isValidSession();
   const [checked, setChecked] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
-  const { updateToken } = props;
+  const { updateToken, navigate } = props;
+
+  const queryParams = queryString.parse(window.location.search);
+  let refParam;
+  const { ref } = queryParams;
+  if (Array.isArray(ref)) {
+    refParam = last(ref);
+  } else {
+    refParam = ref;
+  }
+  const redirectUrl = refParam || HOME_URL;
 
   useEffect(() => {
     // See if there is a valid session.
@@ -47,16 +89,12 @@ function Login(props) {
         expires_in: parseInt(session[EXPIRES_IN_PARAM], 10),
       };
       updateToken(tokenResponse, decodeIdToken(session[ID_TOKEN_PARAM]));
-      setIsLoggedIn(true);
       setChecked(true);
+      navigate(redirectUrl);
     } else {
       generateNewToken();
     }
   }, [isSessionValid, updateToken]);
-
-  function handleLoginBtnClick() {
-    sendAuthorizationRequest();
-  }
 
   function generateNewToken() {
     const code = new URL(window.location.href).searchParams.get('code');
@@ -69,7 +107,7 @@ function Login(props) {
           console.log('TOKEN REQUEST SUCCESS', response);
           updateToken(response[0], response[1]);
           setChecked(true);
-          setIsLoggedIn(true);
+          navigate(redirectUrl);
         })
         .catch(() => {
           setChecked(true);
@@ -79,7 +117,7 @@ function Login(props) {
         .then((response) => {
           updateToken(response[0], response[1]);
           setChecked(true);
-          setIsLoggedIn(true);
+          navigate(redirectUrl);
         })
         .catch(() => {
           setChecked(true);
@@ -89,18 +127,22 @@ function Login(props) {
     }
   }
 
-  const queryParams = queryString.parse(window.location.search);
-  const redirectUrl = queryParams.ref || HOME_URL;
-  if (isLoggedIn) {
-    return <Redirect to={redirectUrl} noThrow />;
-  }
   return (
-    <div className="row justify-content-center col-12 mt-4 justify-content-center">
+    <div className="row">
       {checked && (
-        <div className="col-4 m-auto">
-          <button type="button" className="btn btn-primary col-12" onClick={handleLoginBtnClick}>
-            {t('logIn')}
-          </button>
+        <div className="wrapper d-flex flex-row">
+          <div className="main-content flex-fill">
+            <TopBar />
+            <div className="content py-1 py-sm-3 px-2 px-sm-4">
+              <div className="col-12 flex-column d-flex align-items-center">
+                <span className="text-3xl text-color-2 pb-5 mb-5">{t('logIn.message')}</span>
+                <div>
+                  <img src={bodyIcon} alt="Body Icon" />
+                </div>
+                <div className="text-5xl text-color-2 pt-4">{t('topenx.app')}</div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
@@ -115,7 +157,6 @@ export default connect(
         type: UPDATE_TOKEN_INFO,
         payload: {
           tokenResponse,
-
           idToken,
         },
       }),
