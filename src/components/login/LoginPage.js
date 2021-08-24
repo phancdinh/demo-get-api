@@ -4,6 +4,7 @@ import queryString from 'query-string';
 import { useTranslation } from 'react-i18next';
 import last from 'lodash/last';
 
+import { Link } from '@reach/router';
 import logo from '../../assets/images/logo.svg';
 import bodyIcon from '../../assets/images/body-icon.svg';
 import { UPDATE_TOKEN_INFO, UPDATE_USER_INFO } from '../../redux/actions/actions';
@@ -37,7 +38,9 @@ function TopBar() {
   return (
     <div className="top-menu d-flex col-12 justify-content-between px-3 py-2">
       <div className="d-flex logo">
-        <img src={logo} alt="logo" />
+        <Link className="logo" to="/">
+          <img src={logo} alt="logo" />
+        </Link>
       </div>
       <div className="d-flex px-2">
         <div className="px-4 d-flex align-items-center">
@@ -64,7 +67,6 @@ function Login(props) {
   const isSessionValid = isValidSession();
   const [checked, setChecked] = useState(null);
   const { updateToken, navigate } = props;
-
   const queryParams = queryString.parse(window.location.search);
   let refParam;
   const { ref } = queryParams;
@@ -100,8 +102,6 @@ function Login(props) {
     const refreshToken = getRefreshToken();
     // If a authorization code exists, sends a token request.
     if (code) {
-      // eslint-disable-next-line no-console
-      console.log('send token request');
       sendTokenRequest(code)
         .then((response) => {
           // eslint-disable-next-line no-console

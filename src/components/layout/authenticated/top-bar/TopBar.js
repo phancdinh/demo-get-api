@@ -20,7 +20,7 @@ export default function TopBar() {
             className="bg-transparent border-0 login-btn"
             onClick={() => handleLogoutBtnClick()}
           >
-            <img src={logoOutIcon} alt="Login" />
+            <img src={logoOutIcon} alt="Logout" />
           </button>
         </div>
       </div>
