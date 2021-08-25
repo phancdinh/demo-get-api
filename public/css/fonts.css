@@ -1,0 +1,159 @@
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: italic;
+  font-weight: 100;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyThinItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyXlightItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyLightItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyRegularItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyMediumItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroySemiBoldItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyBoldItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyXBoldItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyHeavyItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: italic;
+  font-weight: 950;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyBlackItalic.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyThin.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyXlight.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyLight.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyRegular.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyMedium.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroySemiBold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyBold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyXBold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyHeavy.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'SVN-Gilroy';
+  font-style: normal;
+  font-weight: 950;
+  font-display: swap;
+  src: local('SVN-Gilroy'), url(../fonts/svn-gilroy/SVN-GilroyBlack.otf) format('opentype');
+}
