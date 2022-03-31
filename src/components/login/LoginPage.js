@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import queryString from 'query-string';
 import { useTranslation } from 'react-i18next';
 import last from 'lodash/last';
+import axios from 'axios';
 
 import { Link } from '@reach/router';
 import logo from '../../assets/images/logo.svg';
@@ -127,6 +128,47 @@ function Login(props) {
       setChecked(true);
     }
   }
+  let amToken = null;
+  const sendGetRequest = async () => {
+    try {
+      await axios
+        .post(
+          'https://api-production.citizen.com.vn/api/auth/v4/client-access-token',
+          {},
+          {
+            headers: {
+              'Client-Id': 'lYi3ivEIfl5CKWse8A2GV07xfK0a',
+              'Client-Secret': '2US2PB29HbpEzhIR8bQZfJ7REK0a',
+            },
+          },
+        )
+        .then((response) => {
+          // eslint-disable-next-line no-debugger
+          amToken = response.data.data.access_token;
+        })
+        .catch((error) => {
+          return Promise.reject(error);
+        });
+      console.log(amToken);
+      axios
+        .get('https://api-production.citizen.com.vn/api/profiles/v5/consent/purposes/relying-party', {
+          headers: {
+            Authorization: `Bearer ${amToken}`,
+            'Client-Token': `Bearer ${amToken}`,
+            'Client-Id': 'lYi3ivEIfl5CKWse8A2GV07xfK0a',
+            'Client-Secret': '2US2PB29HbpEzhIR8bQZfJ7REK0a',
+          },
+        })
+        .then((response) => {})
+        .catch((error) => {
+          return Promise.reject(error);
+        });
+    } catch (err) {
+      // Handle Error Here
+      console.error(err);
+    }
+  };
+  sendGetRequest();
 
   return (
     <div className="row">

@@ -24,7 +24,14 @@ import { ID_TOKEN_PARAM } from '../constants/authentication';
  */
 export const dispatchLogout = () => {
   const token = getSessionParameter(ID_TOKEN_PARAM);
-  addRefLogoutUrl();
-  // Clear the session storage
-  window.location.href = `${CONFIG.LOGOUT_URL}?id_token_hint=${token}&post_logout_redirect_uri=${CONFIG.LOGOUT_REDIRECT_URI}`;
+  if (token) {
+    addRefLogoutUrl();
+    // Clear the session storage
+    const logout = `${CONFIG.LOGOUT_URL}?id_token_hint=${token}&post_logout_redirect_uri=${CONFIG.LOGOUT_REDIRECT_URI}&state=abcxyz`;
+    console.log(logout);
+    // eslint-disable-next-line no-debugger
+    window.location.href = logout;
+  } else {
+    window.location.href = '/';
+  }
 };

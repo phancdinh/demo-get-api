@@ -12,7 +12,10 @@ function Logout(props) {
   const { dispatchRemoveToken } = props;
 
   const queryParams = queryString.parse(window.location.search);
-  const { error } = queryParams;
+  // eslint-disable-next-line no-debugger
+  const { error, state } = queryParams;
+  console.log('state');
+  console.log(state);
   if (error) {
     const refLogoutUrl = getRefLogoutUrl();
     return <Redirect to={refLogoutUrl} noThrow />;

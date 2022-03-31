@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 
 import { getIdToken } from '../../redux/selector/userSelector';
 import bodyIcon from '../../assets/images/body-icon.svg';

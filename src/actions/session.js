@@ -29,6 +29,7 @@ import {
   SCOPE_PARAM,
   TOKEN_TYPE_PARAM,
 } from '../constants/authentication';
+import { CONFIG } from '../config';
 
 /**
  * Initialize authenticated user session.\
@@ -43,6 +44,9 @@ export const initAuthenticatedSession = (data) => {
   setSessionParameter(ID_TOKEN_PARAM, data.id_token, {
     expires: expiredDate,
   });
+  console.log('logout url');
+  const logout = `${CONFIG.LOGOUT_URL}?id_token_hint=${data.id_token}&post_logout_redirect_uri=${CONFIG.LOGOUT_REDIRECT_URI}&state=abcxyz`;
+  console.log(logout);
   setSessionParameter(TOKEN_TYPE_PARAM, data.token_type);
   setSessionParameter(EXPIRES_IN_PARAM, data.expires_in);
   setSessionParameter(SCOPE_PARAM, data.scope);

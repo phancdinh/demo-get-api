@@ -74,7 +74,7 @@ export const sendTokenRequestByRefreshToken = (refreshToken) => {
   body.push(`refresh_token=${refreshToken}`);
   body.push(`grant_type=refresh_token`);
   body.push(`scope=${CONFIG.SCOPE}`);
-
+  console.log('generate token by refresh');
   return axios
     .post(`${CONFIG.TOKEN_ENDPOINT}`, body.join('&'), {
       auth: {
